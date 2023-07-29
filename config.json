@@ -1,0 +1,16 @@
+{
+    "config": {
+            "api_id": 0,
+            "api_hash": "create own :p",
+            "wait_time": 10,
+            "total_chat_id": 1,
+            "total_query": 1
+    },
+    "search_query":
+    {
+        "1": "Pavel Durov"
+    },
+    "chat_ids": {
+        "1": "me"
+    }
+}

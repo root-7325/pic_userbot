@@ -1,16 +1,8 @@
 {
     "config": {
-            "api_id": 0,
-            "api_hash": "create own :p",
-            "wait_time": 10,
-            "total_chat_id": 1,
-            "total_query": 1
-    },
-    "search_query":
-    {
-        "1": "Pavel Durov"
-    },
-    "chat_ids": {
-        "1": "me"
+            "api_id_and_hash": "0 nope",
+            "wait_time": 5,
+            "chat_ids": "me",
+            "queries": "Pavel Durov|Telegram"
     }
 }

@@ -6,10 +6,11 @@ from random import randint
 
 class Main:
     def __init__(self):
-        self.api_id_and_hash = None
         self.app = []
         self.chat_id = []
         self.query = []
+        self.results = []
+        self.api_id_and_hash = None
         self.wait_time = None
 
     def read_config(self):
@@ -27,23 +28,25 @@ class Main:
         self.read_config()
         for client in self.app:
             client.start()
+        self.collect_images()
         self.start_sending()
 
     def start_sending(self):
         while True:
             try:
-                result = []
-                for client in self.app:
-                    result.append(client.get_inline_bot_results("pic", self.query[randint(0, len(self.query) - 1)]))
                 for id in self.chat_id:
-                    i = 0
                     for client in self.app:
-                        client.send_inline_bot_result(id, result[i].query_id, result[i].results[randint(0, len(result[i].results) - 1)].id)
-                        i += 1
+                        for result in self.results:
+                            client.send_inline_bot_result(chat_id = id, query_id = result[0], result_id = result[1][randint(0, len(self.results[0][1]) - 1)].id)
             except Exception:
                 print(f"dibilniki\n{traceback.format_exc()}")
             finally:
                 time.sleep(self.wait_time)
+
+    def collect_images(self):
+        for query in range(0, len(self.query)):
+            result = self.app[0].get_inline_bot_results("pic", self.query[query])
+            self.results.append((result.query_id, result.results))
 
 if __name__ == '__main__':
     main = Main()
